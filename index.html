@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراجعة السكرتارية - التكوين المهني</title>
+    <style>
+        /* CSS styling */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materials {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .materials h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .material-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .material-item {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        
+        .material-item:hover {
+            background-color: #d6eaf8;
+        }
+        
+        .material-item h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info h2 {
+            color: var (--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .document-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .document-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 6px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .document-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">مراجعة السكرتارية</div>
+        <p>موقع متخصص لطلاب التكوين المهني - قسم المكتباتية تخصص السكرتارية</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#materials">المواد الدراسية</a></li>
+            <li><a href="#documents">المستندات</a></li>
+            <li><a href="#tests">الاختبارات</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="hero" id="home">
+            <h>
+                محمد فال يرحب بكم 
+            </h>
+            <h1>مرحبًا بكم في موقع مراجعة السكرتارية</h1>
+            <p>موقع متخصص لمساعدة طلاب قسم المكتباتية تخصص السكرتارية في التكوين المهني على المراجعة والتحضير للامتحانات</p>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <h3>ملخصات دراسية</h3>
+                <p>ملخصات شاملة لجميع مواد التخصص مع التركيز على النقاط الأساسية التي ترد في الامتحانات</p>
+                <a href="#materials" class="btn">استعرض المواد</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>اختبارات تفاعلية</h3>
+                <p>اختبر معلوماتك من خلال مجموعة من الاختبارات التفاعلية مع تصحيح فوري للإجابات</p>
+                <a href="#tests" class="btn">جرب الاختبارات</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>مستندات ومراجع</h3>
+                <p>مجموعة من المستندات والكتب المرجعية التي تغطي جميع جوانب تخصص السكرتارية</p>
+                <a href="#documents" class="btn">تصفح المستندات</a>
+            </div>
+        </section>
+        
+        <section class="materials" id="materials">
+            <h2>المواد الدراسية</h2>
+            <div class="material-list">
+                <div class="material-item">
+                    <h4>أعمال السكرتارية</h4>
+                    <p>ملخص شامل لأعمال السكرتارية مع أمثلة عملية</p>
+                    <a href="#" class="btn" onclick="openModal('secretarial-works')">عرض المادة</a>
+                </div>
+                
+                <div class="material-item">
+                    <h4>إدارة الأرشيف</h4>
+                    <p>أسس إدارة الأرشيف وأنظمة التصنيف والتوثيق</p>
+                    <a href="#" class="btn" onclick="openModal('archive-management')">عرض المادة</a>
+                </div>
+                
+                <div class="material-item">
+                    <h4>الحاسوب والتطبيقات المكتبية</h4>
+                    <p>أهم البرامج والتطبيقات المستخدمة في الأعمال المكتبية</p>
+                    <a href="#" class="btn" onclick="openModal('office-applications')">عرض المادة</a>
+                </div>
+                
+                <div class="material-item">
+                    <h4>الاتصال المهني</h4>
+                    <p>مهارات الاتصال الفعال في بيئة العمل</p>
+                    <a href="#" class="btn" onclick="openModal('professional-communication')">عرض المادة</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="materials" id="documents">
+            <h2>المستندات والمراجع</h2>
+            <div class="document-list">
+                <div class="document-item">
+                    <div>
+                        <h4>السكرتارية وإدارة المكاتب</h4>
+                        <p>كتاب شامل يغطي جميع جوانب أعمال السكرتارية الحديثة</p>
+                    </div>
+                    <a href="Kotobati - السكرتارية و إدارة المكاتب.pdf" class="btn" download>تحميل المستند</a>
+                </div>
+                
+                <div class="document-item">
+                    <div>
+                        <h4>دليل المهارات المكتبية</h4>
+                        <p>دليل عملي لمهارات الحاسوب والتطبيقات المكتبية</p>
+                    </div>
+                    <a href="#" class="btn" onclick="alert('سيتم إضافة المستند قريبًا')">تحميل المستند</a>
+                </div>
+                
+                <div class="document-item">
+                    <div>
+                        <h4>نماذج المراسلات الإدارية</h4>
+                        <p>مجموعة نماذج جاهزة للمراسلات والتقارير الإدارية</p>
+                    </div>
+                    <a href="#" class="btn" onclick="alert('سيتم إضافة المستند قريبًا')">تحميل المستند</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="materials" id="tests">
+            <h2>الاختبارات التفاعلية</h2>
+            <div class="material-list">
+                <div class="material-item">
+                    <h4>اختبار أعمال السكرتارية</h4>
+                    <p>اختبر معلوماتك في أعمال السكرتارية الأساسية</p>
+                    <a href="#" class="btn" onclick="startQuiz('secretarial')">بدء الاختبار</a>
+                </div>
+                
+                <div class="material-item">
+                    <h4>اختبار إدارة الأرشيف</h4>
+                    <p>أسئلة حول أنظمة التصنيف والتوثيق</p>
+                    <a href="#" class="btn" onclick="startQuiz('archive')">بدء الاختبار</a>
+                </div>
+                
+                <div class="material-item">
+                    <h4>اختبار التطبيقات المكتبية</h4>
+                    <p>أسئلة حول برامج الأوفيس والتطبيقات المكتبية</p>
+                    <a href="#" class="btn" onclick="startQuiz('office')">بدء الاختبار</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact-info" id="contact">
+            <h2>اتصل بنا</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>الهاتف: 48689799</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>العنوان: مدينة التكوين المهني، مبنى الإدارة، الطابق الثالث</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>موقع مراجعة السكرتارية &copy; 2025 - جميع الحقوق محفوظة</p>
+        <p>صمم خصيصًا لطلاب التكوين المهني - قسم المكتباتية تخصص السكرتارية</p>
+    </footer>
+    
+    <!-- Modal for materials -->
+    <div id="materialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Content will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript for modal functionality
+        function openModal(material) {
+            const modal = document.getElementById('materialModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Assuming 'material' corresponds to content you want to load
+            modalContent.innerHTML = `<h2>${material}</h2><p>Loading content for ${material}...</p>`;
+            
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('materialModal');
+            modal.style.display = 'none';
+        }
+        
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('materialModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Placeholder for starting quizzes
+        function startQuiz(quiz) {
+            alert(`Starting quiz: ${quiz}`);
+        }
+    </script>
+</body>
+</html>
